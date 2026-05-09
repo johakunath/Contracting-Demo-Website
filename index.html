@@ -1,0 +1,2542 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Heat & Cold Contracting GmbH — Decarbonization-as-a-Service</title>
+<meta name="description" content="Decarbonization-as-a-Service für institutionelle Wohnungsportfolios. Planung, Finanzierung, Umsetzung, Betrieb und Monitoring aus einer Hand." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter+Tight:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   GLOBAL RESET + SHARED LAYER
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Inter Tight", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  background: #0a0a0a;
+  color: #fff;
+  transition: background-color 600ms cubic-bezier(.7,0,.2,1), color 600ms cubic-bezier(.7,0,.2,1);
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; width: 100%; }
+input[type="range"]:focus { outline: none; }
+
+/* Theme content — only one visible at a time */
+.theme-page { display: none; opacity: 0; transition: opacity 500ms cubic-bezier(.7,0,.2,1); }
+.theme-page.is-active { display: block; }
+.theme-page.is-visible { opacity: 1; }
+
+/* ============================================================
+   THEME SWITCHER (fixed top right)
+   ============================================================ */
+.switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px;
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 100px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.04);
+  font-family: "Inter Tight", sans-serif;
+}
+.switcher__btn {
+  position: relative;
+  padding: 9px 18px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .01em;
+  color: #555;
+  border-radius: 100px;
+  transition: color 300ms ease, background 300ms ease;
+  white-space: nowrap;
+}
+.switcher__btn:hover { color: #000; }
+.switcher__btn.is-active { background: #0e1a2b; color: #fff; }
+.switcher__label {
+  display: inline-block;
+  margin-right: 8px;
+  padding-left: 14px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #888;
+}
+@media (max-width: 1180px) {
+  .switcher__label { display: none; }
+}
+@media (max-width: 1024px) {
+  .switcher { top: auto; bottom: 16px; right: 50%; transform: translateX(50%); }
+  .switcher__btn { padding: 8px 14px; font-size: 11px; }
+}
+@media (max-width: 720px) {
+  .switcher__btn { padding: 8px 12px; font-size: 11px; }
+}
+
+/* ============================================================
+   ====================  THEME 1: STILLE INFRASTRUKTUR  =======
+   Editorial, deep navy + stone, serif display, hairlines
+   ============================================================ */
+body[data-theme="silent"] { background: #faf8f4; color: #0e1a2b; }
+
+.silent {
+  font-family: "Inter Tight", sans-serif;
+  background: #faf8f4;
+  color: #0e1a2b;
+}
+
+.silent ::selection { background: #0e1a2b; color: #faf8f4; }
+
+/* nav */
+.silent__nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 48px;
+  background: rgba(250,248,244,.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(14,26,43,.08);
+  font-size: 13px;
+  letter-spacing: .01em;
+}
+.silent__brand {
+  display: flex; align-items: center; gap: 12px;
+  font-family: "Instrument Serif", serif;
+  font-size: 19px;
+  letter-spacing: -.01em;
+}
+.silent__brand-mark {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #c8b88a 0%, #0e1a2b 70%);
+  flex-shrink: 0;
+}
+.silent__brand-mark--small { width: 18px; height: 18px; }
+.silent__nav-links { display: flex; gap: 32px; }
+.silent__nav-link { position: relative; color: #0e1a2b; opacity: .7; transition: opacity 200ms; padding: 4px 0; font-weight: 500; }
+.silent__nav-link:hover { opacity: 1; }
+.silent__nav-link::after {
+  content: ""; position: absolute; left: 0; bottom: -2px;
+  width: 0; height: 1px; background: #0e1a2b; transition: width 250ms ease;
+}
+.silent__nav-link:hover::after { width: 100%; }
+.silent__nav-cta {
+  padding: 10px 20px;
+  background: #0e1a2b; color: #faf8f4;
+  border-radius: 100px;
+  font-size: 13px; font-weight: 500;
+  transition: background 200ms ease;
+}
+.silent__nav-cta:hover { background: #1c2d4a; }
+@media (max-width: 880px) {
+  .silent__nav { padding: 18px 24px; }
+  .silent__nav-links { display: none; }
+}
+
+/* hero */
+.silent__hero {
+  position: relative;
+  padding: 100px 48px 140px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(14,26,43,.08);
+}
+.silent__hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1320px; margin: 0 auto;
+  align-items: end;
+}
+.silent__eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: "Inter Tight", sans-serif;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: #5a6a7d;
+  margin-bottom: 32px;
+}
+.silent__eyebrow::before {
+  content: ""; width: 28px; height: 1px; background: #5a6a7d;
+}
+.silent__h1 {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(48px, 7vw, 92px);
+  line-height: 1.02;
+  letter-spacing: -.02em;
+  font-weight: 400;
+  color: #0e1a2b;
+  margin-bottom: 0;
+}
+.silent__h1 em { font-style: italic; color: #6e7892; }
+.silent__hero-meta {
+  display: flex; flex-direction: column; gap: 28px;
+  padding-bottom: 8px;
+}
+.silent__lede {
+  font-size: 18px; line-height: 1.55;
+  color: #2c3a4f;
+  max-width: 520px;
+  font-weight: 400;
+  text-wrap: pretty;
+}
+.silent__cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.silent__cta-primary, .silent__cta-secondary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 26px;
+  font-size: 14px; font-weight: 500; letter-spacing: .005em;
+  border-radius: 100px;
+  transition: transform 200ms ease, background 200ms ease, border-color 200ms ease;
+}
+.silent__cta-primary { background: #0e1a2b; color: #faf8f4; }
+.silent__cta-primary:hover { background: #1c2d4a; transform: translateY(-1px); }
+.silent__cta-secondary { border: 1px solid rgba(14,26,43,.2); }
+.silent__cta-secondary:hover { border-color: #0e1a2b; }
+.silent__cta-arrow { transition: transform 250ms ease; }
+.silent__cta-primary:hover .silent__cta-arrow,
+.silent__cta-secondary:hover .silent__cta-arrow { transform: translateX(4px); }
+
+/* hero plan visual */
+.silent__hero-plan {
+  position: absolute;
+  right: -60px; top: 60px; width: 380px; height: 380px;
+  pointer-events: none;
+  opacity: .9;
+}
+.silent__hero-plan svg { width: 100%; height: 100%; }
+.silent__hero-plan circle, .silent__hero-plan rect, .silent__hero-plan line, .silent__hero-plan path {
+  vector-effect: non-scaling-stroke;
+}
+
+/* hero strip / proof */
+.silent__strip {
+  display: flex; gap: 60px;
+  padding: 56px 48px;
+  max-width: 1320px; margin: 0 auto;
+  border-bottom: 1px solid rgba(14,26,43,.08);
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.silent__strip-label {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: #5a6a7d;
+  margin-right: auto;
+}
+.silent__strip-stats { display: flex; gap: 56px; flex-wrap: wrap; }
+.silent__stat-num {
+  font-family: "Instrument Serif", serif;
+  font-size: 38px; font-weight: 400;
+  line-height: 1; color: #0e1a2b;
+}
+.silent__stat-num sup { font-size: 14px; vertical-align: super; color: #6e7892; }
+.silent__stat-cap {
+  display: block; margin-top: 8px;
+  font-size: 12px; color: #5a6a7d;
+  letter-spacing: .04em;
+}
+
+/* sections */
+.silent__section {
+  padding: 140px 48px;
+  max-width: 1320px; margin: 0 auto;
+}
+.silent__section-head {
+  display: grid; grid-template-columns: 1fr 2fr; gap: 80px;
+  margin-bottom: 96px;
+  align-items: end;
+}
+.silent__section-num {
+  font-family: "Instrument Serif", serif;
+  font-size: 14px; font-style: italic;
+  color: #6e7892;
+}
+.silent__section-h {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(36px, 4.5vw, 60px);
+  line-height: 1.05; letter-spacing: -.015em;
+  font-weight: 400;
+  color: #0e1a2b;
+  text-wrap: balance;
+}
+.silent__section-h em { font-style: italic; color: #6e7892; }
+.silent__section-sub {
+  margin-top: 20px;
+  font-size: 17px; line-height: 1.55;
+  color: #2c3a4f; max-width: 560px;
+  text-wrap: pretty;
+}
+
+/* leistung modules */
+.silent__modules {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(14,26,43,.12);
+}
+.silent__module {
+  padding: 40px 32px 48px;
+  border-right: 1px solid rgba(14,26,43,.12);
+  border-bottom: 1px solid rgba(14,26,43,.12);
+  position: relative;
+  transition: background 300ms ease;
+}
+.silent__module:nth-child(3n) { border-right: none; }
+.silent__module:hover { background: rgba(14,26,43,.025); }
+.silent__module-num {
+  font-family: "Instrument Serif", serif;
+  font-size: 13px; font-style: italic;
+  color: #6e7892; margin-bottom: 56px;
+}
+.silent__module-h {
+  font-family: "Instrument Serif", serif;
+  font-size: 26px; font-weight: 400; line-height: 1.15;
+  letter-spacing: -.005em;
+  margin-bottom: 16px;
+}
+.silent__module-p {
+  font-size: 14px; line-height: 1.55;
+  color: #2c3a4f;
+}
+.silent__module-icon {
+  position: absolute; top: 32px; right: 32px;
+  width: 28px; height: 28px;
+  color: #0e1a2b;
+  opacity: .5;
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+.silent__module:hover .silent__module-icon { opacity: 1; transform: rotate(15deg); }
+
+@media (max-width: 980px) {
+  .silent__modules { grid-template-columns: repeat(2, 1fr); }
+  .silent__module:nth-child(3n) { border-right: 1px solid rgba(14,26,43,.12); }
+  .silent__module:nth-child(2n) { border-right: none; }
+}
+@media (max-width: 640px) {
+  .silent__modules { grid-template-columns: 1fr; }
+  .silent__module { border-right: none !important; }
+  .silent__hero-grid, .silent__section-head { grid-template-columns: 1fr; gap: 36px; }
+  .silent__hero { padding: 60px 24px 80px; }
+  .silent__section { padding: 80px 24px; }
+  .silent__strip { padding: 36px 24px; gap: 32px; }
+  .silent__strip-stats { gap: 36px; }
+  .silent__hero-plan { display: none; }
+}
+
+/* portfolio pillars */
+.silent__pillars {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(14,26,43,.12);
+  border-bottom: 1px solid rgba(14,26,43,.12);
+}
+.silent__pillar {
+  padding: 36px 24px 36px;
+  border-right: 1px solid rgba(14,26,43,.08);
+  position: relative;
+}
+.silent__pillar:last-child { border-right: none; }
+.silent__pillar-num {
+  font-family: "Instrument Serif", serif;
+  font-size: 56px; font-weight: 400; line-height: 1;
+  color: #0e1a2b;
+  margin-bottom: 20px;
+}
+.silent__pillar-num sup { font-size: 18px; color: #c8b88a; }
+.silent__pillar-h {
+  font-size: 14px; font-weight: 600;
+  margin-bottom: 8px; letter-spacing: -.005em;
+}
+.silent__pillar-p {
+  font-size: 13px; line-height: 1.5;
+  color: #2c3a4f;
+}
+@media (max-width: 980px) {
+  .silent__pillars { grid-template-columns: repeat(2, 1fr); }
+  .silent__pillar { border-bottom: 1px solid rgba(14,26,43,.08); }
+  .silent__pillar:nth-child(2n) { border-right: none; }
+}
+@media (max-width: 480px) {
+  .silent__pillars { grid-template-columns: 1fr; }
+  .silent__pillar { border-right: none; }
+}
+
+/* about */
+.silent__about-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+}
+.silent__about-text { font-size: 17px; line-height: 1.6; color: #2c3a4f; max-width: 540px; }
+.silent__about-text p + p { margin-top: 18px; }
+.silent__about-card {
+  background: #0e1a2b; color: #faf8f4;
+  padding: 40px 36px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+.silent__about-card::before {
+  content: ""; position: absolute; top: 0; right: 0;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle at 70% 30%, rgba(200,184,138,.15), transparent 60%);
+  pointer-events: none;
+}
+.silent__about-card-eyebrow {
+  font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+  color: #c8b88a; margin-bottom: 24px;
+}
+.silent__about-card h4 {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400; font-size: 26px; line-height: 1.2;
+  margin-bottom: 24px;
+}
+.silent__about-meta { font-size: 14px; line-height: 1.7; color: #c5cdd8; }
+.silent__about-meta strong { color: #faf8f4; font-weight: 500; }
+.silent__about-meta a { color: #c8b88a; border-bottom: 1px solid rgba(200,184,138,.4); }
+
+@media (max-width: 880px) {
+  .silent__about-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* footer */
+.silent__footer {
+  border-top: 1px solid rgba(14,26,43,.08);
+  padding: 36px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: #5a6a7d; letter-spacing: .04em;
+}
+.silent__footer-links { display: flex; gap: 24px; }
+@media (max-width: 640px) {
+  .silent__footer { padding: 28px 24px; flex-direction: column; gap: 20px; }
+}
+
+/* ============================================================
+   ====================  THEME 2: WÄRMEWENDE  =================
+   Warm earthy, narrative, terracotta + sage + cream
+   ============================================================ */
+body[data-theme="wende"] { background: #f5efe4; color: #2a2520; }
+
+.wende {
+  font-family: "Inter Tight", sans-serif;
+  background: #f5efe4;
+  color: #2a2520;
+}
+.wende ::selection { background: #c75d3f; color: #f5efe4; }
+
+/* nav */
+.wende__nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 48px;
+  background: rgba(245,239,228,.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.wende__brand {
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 600; font-size: 17px; letter-spacing: -.005em;
+}
+.wende__brand-mark {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, #c75d3f 0%, #e89a5d 100%);
+  border-radius: 8px;
+  position: relative; overflow: hidden;
+  flex-shrink: 0;
+}
+.wende__brand-mark::after {
+  content: ""; position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: #f5efe4;
+}
+.wende__nav-links { display: flex; gap: 28px; font-size: 14px; }
+.wende__nav-link { color: #2a2520; opacity: .75; transition: opacity 200ms; font-weight: 500; }
+.wende__nav-link:hover { opacity: 1; }
+.wende__nav-cta {
+  padding: 11px 20px;
+  background: #2f3a2e; color: #f5efe4;
+  border-radius: 100px;
+  font-size: 14px; font-weight: 500;
+  transition: background 200ms;
+}
+.wende__nav-cta:hover { background: #1f2a1e; }
+@media (max-width: 880px) {
+  .wende__nav { padding: 20px 24px; }
+  .wende__nav-links { display: none; }
+}
+
+/* hero */
+.wende__hero {
+  position: relative;
+  padding: 80px 48px 0;
+  overflow: hidden;
+}
+.wende__hero-inner {
+  max-width: 1320px; margin: 0 auto;
+}
+.wende__hero-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 8px 14px;
+  background: rgba(199,93,63,.1);
+  border: 1px solid rgba(199,93,63,.2);
+  border-radius: 100px;
+  color: #c75d3f;
+  font-size: 12px; font-weight: 500;
+  margin-bottom: 32px;
+}
+.wende__hero-tag-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #c75d3f;
+  animation: wende-pulse 2.4s ease-in-out infinite;
+}
+@keyframes wende-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(199,93,63,.5); }
+  50% { box-shadow: 0 0 0 6px rgba(199,93,63,0); }
+}
+.wende__h1 {
+  font-family: "Newsreader", serif;
+  font-weight: 500;
+  font-size: clamp(44px, 7vw, 88px);
+  line-height: 1.04;
+  letter-spacing: -.02em;
+  max-width: 1100px;
+  margin-bottom: 36px;
+  text-wrap: balance;
+}
+.wende__h1 em {
+  font-style: italic;
+  background: linear-gradient(180deg, #c75d3f 0%, #b04a2e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.wende__hero-row {
+  display: grid; grid-template-columns: 1.4fr 1fr;
+  gap: 60px;
+  align-items: end;
+  padding-bottom: 60px;
+}
+.wende__hero-lede {
+  font-size: 19px; line-height: 1.55;
+  color: #4a423a;
+  max-width: 540px;
+  text-wrap: pretty;
+}
+.wende__hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.wende__cta-primary {
+  padding: 16px 28px;
+  background: #c75d3f; color: #f5efe4;
+  border-radius: 100px;
+  font-size: 15px; font-weight: 500;
+  transition: background 200ms, transform 200ms;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.wende__cta-primary:hover { background: #b04a2e; transform: translateY(-1px); }
+.wende__cta-secondary {
+  padding: 16px 28px;
+  background: transparent; color: #2a2520;
+  border: 1px solid rgba(42,37,32,.2);
+  border-radius: 100px;
+  font-size: 15px; font-weight: 500;
+  transition: border-color 200ms, background 200ms;
+}
+.wende__cta-secondary:hover { border-color: #2a2520; background: rgba(42,37,32,.04); }
+
+/* hero scene — buildings + sun */
+.wende__scene {
+  position: relative;
+  height: 380px;
+  margin-top: 40px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f9d9b5 0%, #e89a5d 60%, #c75d3f 100%);
+  box-shadow: 0 30px 80px -30px rgba(199,93,63,.4);
+}
+.wende__scene-sun {
+  position: absolute;
+  top: 60px; right: 12%;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff5dc 0%, #ffd49e 50%, transparent 70%);
+  filter: blur(2px);
+  animation: wende-sun 12s ease-in-out infinite;
+}
+@keyframes wende-sun {
+  0%, 100% { transform: translateY(0); opacity: .9; }
+  50% { transform: translateY(-8px); opacity: 1; }
+}
+.wende__scene-buildings {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 70%;
+}
+.wende__scene-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(47,58,46,.18) 100%);
+}
+
+/* journey timeline */
+.wende__journey {
+  background: #2f3a2e;
+  color: #f5efe4;
+  padding: 100px 48px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 80px;
+}
+.wende__journey-inner { max-width: 1320px; margin: 0 auto; }
+.wende__journey-eyebrow {
+  display: inline-block; font-size: 12px; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: #c75d3f;
+  margin-bottom: 24px;
+}
+.wende__journey-h {
+  font-family: "Newsreader", serif;
+  font-weight: 500; font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.08; letter-spacing: -.015em;
+  max-width: 880px;
+  text-wrap: balance;
+  margin-bottom: 80px;
+}
+.wende__journey-h em { font-style: italic; color: #d6c5a0; }
+.wende__journey-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+}
+.wende__journey-line {
+  position: absolute;
+  top: 22px; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #c75d3f 0%, #d6c5a0 100%);
+  opacity: .4;
+}
+.wende__journey-step { position: relative; }
+.wende__journey-dot {
+  width: 14px; height: 14px;
+  background: #c75d3f;
+  border-radius: 50%;
+  border: 4px solid #2f3a2e;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 24px;
+  margin-top: 16px;
+}
+.wende__journey-step:nth-child(2n) .wende__journey-dot { background: #d6c5a0; }
+.wende__journey-num {
+  font-family: "Newsreader", serif;
+  font-size: 13px; font-style: italic;
+  color: #d6c5a0; margin-bottom: 8px;
+}
+.wende__journey-step-h {
+  font-size: 17px; font-weight: 600;
+  margin-bottom: 8px; letter-spacing: -.005em;
+}
+.wende__journey-p {
+  font-size: 13px; line-height: 1.55;
+  color: #b9b3a2;
+}
+@media (max-width: 980px) {
+  .wende__journey-track { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .wende__journey-line { display: none; }
+}
+
+/* leistung — alternating warm cards */
+.wende__section {
+  padding: 120px 48px;
+  max-width: 1320px; margin: 0 auto;
+}
+.wende__section-head {
+  margin-bottom: 64px;
+  max-width: 720px;
+}
+.wende__section-eyebrow {
+  font-size: 12px; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: #c75d3f;
+  margin-bottom: 18px;
+}
+.wende__section-h {
+  font-family: "Newsreader", serif;
+  font-weight: 500; font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.08; letter-spacing: -.015em;
+  text-wrap: balance;
+}
+.wende__section-h em { font-style: italic; color: #c75d3f; }
+.wende__section-sub {
+  margin-top: 18px;
+  font-size: 17px; line-height: 1.55;
+  color: #4a423a;
+  max-width: 600px;
+  text-wrap: pretty;
+}
+
+.wende__modules {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.wende__module {
+  padding: 36px 32px;
+  background: #ffffff;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 300ms cubic-bezier(.7,0,.2,1), box-shadow 300ms ease;
+}
+.wende__module:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px -8px rgba(42,37,32,.12);
+}
+.wende__module--accent {
+  background: linear-gradient(135deg, #c75d3f 0%, #b04a2e 100%);
+  color: #f5efe4;
+}
+.wende__module--moss {
+  background: #2f3a2e; color: #f5efe4;
+}
+.wende__module-row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 28px;
+}
+.wende__module-num {
+  font-family: "Newsreader", serif;
+  font-size: 14px; font-style: italic;
+  opacity: .6;
+}
+.wende__module-icon {
+  width: 36px; height: 36px;
+  background: rgba(42,37,32,.06);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  color: #2a2520;
+}
+.wende__module--accent .wende__module-icon,
+.wende__module--moss .wende__module-icon {
+  background: rgba(255,255,255,.15); color: #f5efe4;
+}
+.wende__module-h {
+  font-family: "Newsreader", serif;
+  font-weight: 500; font-size: 26px;
+  letter-spacing: -.005em; line-height: 1.2;
+  margin-bottom: 12px;
+}
+.wende__module-p {
+  font-size: 14px; line-height: 1.55;
+  color: #4a423a; opacity: .9;
+}
+.wende__module--accent .wende__module-p,
+.wende__module--moss .wende__module-p { color: #f5efe4; opacity: .85; }
+
+@media (max-width: 720px) { .wende__modules { grid-template-columns: 1fr; } }
+
+/* portfolio — pressure cards */
+.wende__pressure {
+  background: #ebe1cf;
+  padding: 100px 48px;
+}
+.wende__pressure-inner { max-width: 1320px; margin: 0 auto; }
+.wende__pressure-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 48px;
+}
+.wende__pressure-card {
+  padding: 32px 28px;
+  background: #f5efe4;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.wende__pressure-card-num {
+  font-family: "Newsreader", serif;
+  font-style: italic;
+  font-size: 60px; font-weight: 500; line-height: 1;
+  color: #c75d3f;
+  margin-bottom: 16px;
+}
+.wende__pressure-card-h {
+  font-size: 16px; font-weight: 600;
+  margin-bottom: 8px;
+}
+.wende__pressure-card-p {
+  font-size: 14px; line-height: 1.55;
+  color: #4a423a;
+}
+@media (max-width: 880px) { .wende__pressure-grid { grid-template-columns: 1fr; } }
+
+/* about */
+.wende__about {
+  padding: 120px 48px;
+  max-width: 1320px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.wende__about-text { font-size: 17px; line-height: 1.65; color: #4a423a; }
+.wende__about-text p + p { margin-top: 18px; }
+.wende__about-quote {
+  font-family: "Newsreader", serif;
+  font-style: italic;
+  font-size: 28px; line-height: 1.3;
+  color: #2a2520;
+  margin: 32px 0;
+  padding-left: 20px;
+  border-left: 2px solid #c75d3f;
+  text-wrap: balance;
+}
+.wende__about-card {
+  background: #2f3a2e;
+  color: #f5efe4;
+  padding: 36px 32px;
+  border-radius: 16px;
+}
+.wende__about-card h4 {
+  font-family: "Newsreader", serif;
+  font-weight: 500; font-size: 22px;
+  margin-bottom: 24px;
+}
+.wende__about-card-eyebrow {
+  font-size: 11px; letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #c75d3f;
+  margin-bottom: 18px;
+}
+.wende__about-list {
+  list-style: none; font-size: 14px; line-height: 1.8;
+  color: #d6c5a0;
+}
+.wende__about-list strong { color: #f5efe4; font-weight: 500; }
+
+@media (max-width: 880px) { .wende__about { grid-template-columns: 1fr; gap: 40px; } }
+
+@media (max-width: 640px) {
+  .wende__hero { padding: 40px 24px 0; }
+  .wende__hero-row { grid-template-columns: 1fr; gap: 32px; padding-bottom: 40px; }
+  .wende__journey { padding: 70px 24px; }
+  .wende__section { padding: 70px 24px; }
+  .wende__pressure { padding: 70px 24px; }
+  .wende__about { padding: 70px 24px; }
+  .wende__scene { height: 240px; }
+}
+
+/* footer */
+.wende__footer {
+  border-top: 1px solid rgba(42,37,32,.1);
+  padding: 36px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; color: #6a635a;
+}
+.wende__footer-links { display: flex; gap: 24px; }
+@media (max-width: 640px) { .wende__footer { padding: 28px 24px; flex-direction: column; gap: 16px; } }
+
+/* ============================================================
+   ====================  THEME 3: PORTFOLIO OS  ===============
+   Dark dashboard, neon lime, mono accents, modular cards
+   ============================================================ */
+body[data-theme="os"] { background: #0a0b0e; color: #e6e7eb; }
+
+.os {
+  font-family: "Space Grotesk", sans-serif;
+  background: #0a0b0e;
+  color: #e6e7eb;
+}
+.os ::selection { background: #c6f84e; color: #0a0b0e; }
+
+.os__mono { font-family: "JetBrains Mono", monospace; }
+
+/* nav */
+.os__nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 32px;
+  background: rgba(10,11,14,.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.os__brand {
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 600; font-size: 15px; letter-spacing: -.005em;
+}
+.os__brand-mark {
+  width: 28px; height: 28px;
+  background: #c6f84e;
+  border-radius: 6px;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: 0 0 18px rgba(198,248,78,.4);
+}
+.os__brand-mark::after {
+  content: ""; position: absolute; inset: 6px;
+  background: #0a0b0e;
+  border-radius: 2px;
+}
+.os__brand-mark::before {
+  content: ""; position: absolute;
+  top: 10px; left: 10px;
+  width: 8px; height: 8px;
+  background: #c6f84e;
+  border-radius: 1px;
+  z-index: 1;
+}
+.os__brand-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px; padding: 3px 8px;
+  background: rgba(198,248,78,.12);
+  color: #c6f84e;
+  border-radius: 4px;
+  margin-left: 4px;
+  letter-spacing: .04em;
+}
+.os__nav-links { display: flex; gap: 4px; padding: 4px; background: rgba(255,255,255,.04); border-radius: 100px; }
+.os__nav-link {
+  padding: 8px 14px;
+  font-size: 13px; font-weight: 500;
+  color: rgba(230,231,235,.7);
+  border-radius: 100px;
+  transition: background 200ms, color 200ms;
+}
+.os__nav-link:hover { background: rgba(255,255,255,.06); color: #fff; }
+.os__nav-cta {
+  padding: 9px 16px;
+  background: #c6f84e; color: #0a0b0e;
+  border-radius: 100px;
+  font-size: 13px; font-weight: 600;
+  transition: background 200ms;
+}
+.os__nav-cta:hover { background: #b3e441; }
+@media (max-width: 880px) {
+  .os__nav { padding: 14px 20px; }
+  .os__nav-links { display: none; }
+}
+
+/* hero — bento grid */
+.os__hero {
+  padding: 32px;
+  max-width: 1440px; margin: 0 auto;
+}
+.os__bento {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 14px;
+  min-height: 600px;
+}
+.os__card {
+  background: #13151a;
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 16px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.os__card-headline {
+  grid-column: 1 / 2; grid-row: 1 / 3;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  background: #13151a;
+  position: relative;
+}
+.os__card-headline::before {
+  content: ""; position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse 600px 400px at 80% 100%, rgba(198,248,78,.08), transparent 70%);
+  pointer-events: none;
+}
+.os__card-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px;
+  background: rgba(198,248,78,.1);
+  border: 1px solid rgba(198,248,78,.2);
+  border-radius: 100px;
+  color: #c6f84e;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  width: fit-content;
+  margin-bottom: 36px;
+}
+.os__card-tag-dot {
+  width: 6px; height: 6px; background: #c6f84e; border-radius: 50%;
+  animation: os-pulse 1.6s ease-in-out infinite;
+  box-shadow: 0 0 10px #c6f84e;
+}
+@keyframes os-pulse {
+  0%, 100% { opacity: .6; }
+  50% { opacity: 1; }
+}
+.os__h1 {
+  font-size: clamp(40px, 5.4vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -.025em;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #fff;
+  text-wrap: balance;
+}
+.os__h1 .os__h1-accent {
+  color: #c6f84e;
+  text-shadow: 0 0 24px rgba(198,248,78,.3);
+}
+.os__hero-lede {
+  font-size: 16px; line-height: 1.55;
+  color: rgba(230,231,235,.7);
+  max-width: 480px;
+  margin-bottom: 32px;
+  text-wrap: pretty;
+}
+.os__hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.os__cta-primary {
+  padding: 14px 22px;
+  background: #c6f84e; color: #0a0b0e;
+  border-radius: 100px;
+  font-size: 14px; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: background 200ms, transform 200ms;
+}
+.os__cta-primary:hover { background: #b3e441; transform: translateY(-1px); }
+.os__cta-secondary {
+  padding: 14px 22px;
+  background: rgba(255,255,255,.05);
+  color: #e6e7eb;
+  border-radius: 100px;
+  font-size: 14px; font-weight: 500;
+  border: 1px solid rgba(255,255,255,.08);
+  transition: background 200ms;
+}
+.os__cta-secondary:hover { background: rgba(255,255,255,.08); }
+
+/* live data card */
+.os__card-live {
+  display: flex; flex-direction: column; gap: 16px;
+}
+.os__card-mini-h {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: rgba(230,231,235,.5);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.os__live-stat {
+  font-size: 38px; font-weight: 600;
+  letter-spacing: -.02em;
+  line-height: 1;
+  color: #fff;
+  font-feature-settings: "tnum";
+}
+.os__live-stat-unit {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px; color: #c6f84e;
+  margin-left: 6px;
+}
+.os__live-delta {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: #c6f84e;
+}
+.os__sparkline { width: 100%; height: 60px; margin-top: auto; }
+
+/* portfolio map card */
+.os__card-map {
+  position: relative;
+  overflow: hidden;
+}
+.os__map-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+  margin-top: 24px;
+}
+.os__map-cell {
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: rgba(255,255,255,.04);
+  transition: background 200ms;
+}
+.os__map-cell.is-warm { background: rgba(255,138,87,.6); }
+.os__map-cell.is-warm-2 { background: rgba(255,138,87,.35); }
+.os__map-cell.is-cool { background: rgba(94,234,212,.4); }
+.os__map-cell.is-cool-2 { background: rgba(94,234,212,.7); }
+.os__map-cell.is-cool-3 { background: #c6f84e; }
+
+.os__map-legend {
+  display: flex; gap: 14px; margin-top: 16px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  color: rgba(230,231,235,.5);
+}
+.os__map-legend-item { display: flex; align-items: center; gap: 6px; }
+.os__map-legend-dot { width: 8px; height: 8px; border-radius: 2px; }
+
+@media (max-width: 980px) {
+  .os__bento { grid-template-columns: 1fr 1fr; min-height: 0; }
+  .os__card-headline { grid-column: 1 / -1; grid-row: auto; }
+}
+@media (max-width: 640px) {
+  .os__bento { grid-template-columns: 1fr; }
+}
+
+/* sections */
+.os__section { padding: 100px 32px; max-width: 1440px; margin: 0 auto; }
+.os__section-head {
+  display: flex; justify-content: space-between; align-items: end;
+  gap: 40px; margin-bottom: 48px; flex-wrap: wrap;
+}
+.os__section-head-left { max-width: 720px; }
+.os__section-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 11px;
+  background: rgba(198,248,78,.08);
+  border: 1px solid rgba(198,248,78,.18);
+  border-radius: 100px;
+  color: #c6f84e;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  margin-bottom: 18px;
+}
+.os__section-h {
+  font-size: clamp(34px, 4.4vw, 52px);
+  line-height: 1.05; letter-spacing: -.02em;
+  font-weight: 600;
+  color: #fff;
+  text-wrap: balance;
+}
+.os__section-h em { color: #c6f84e; font-style: normal; }
+.os__section-sub {
+  margin-top: 16px;
+  font-size: 16px; line-height: 1.55;
+  color: rgba(230,231,235,.6);
+  max-width: 560px;
+  text-wrap: pretty;
+}
+
+/* leistung modules */
+.os__modules {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+.os__module {
+  background: #13151a;
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 16px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 300ms ease, background 300ms ease;
+}
+.os__module:hover {
+  border-color: rgba(198,248,78,.3);
+  background: #161922;
+}
+.os__module-row {
+  display: flex; justify-content: space-between; align-items: start;
+  margin-bottom: 36px;
+}
+.os__module-num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: rgba(230,231,235,.4);
+  letter-spacing: .06em;
+}
+.os__module-status {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  color: #c6f84e;
+  padding: 3px 8px;
+  background: rgba(198,248,78,.08);
+  border-radius: 4px;
+}
+.os__module-h {
+  font-size: 22px; font-weight: 600;
+  letter-spacing: -.01em;
+  margin-bottom: 12px;
+  color: #fff;
+}
+.os__module-p {
+  font-size: 14px; line-height: 1.55;
+  color: rgba(230,231,235,.6);
+}
+.os__module-meta {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  display: flex; justify-content: space-between;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: rgba(230,231,235,.5);
+}
+.os__module-meta strong { color: #c6f84e; font-weight: 500; }
+@media (max-width: 980px) { .os__modules { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .os__modules { grid-template-columns: 1fr; } .os__section { padding: 60px 20px; } .os__hero { padding: 20px; } }
+
+/* portfolio pressure */
+.os__pressure {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px;
+}
+.os__pressure-card {
+  background: #13151a;
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 16px;
+  padding: 24px 22px;
+  position: relative;
+  overflow: hidden;
+}
+.os__pressure-bar {
+  height: 4px;
+  background: rgba(255,255,255,.06);
+  border-radius: 2px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  position: relative;
+}
+.os__pressure-bar-fill {
+  height: 100%; border-radius: 2px;
+  background: linear-gradient(90deg, #c6f84e 0%, #5eead4 100%);
+}
+.os__pressure-card-num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px; color: rgba(230,231,235,.4);
+  letter-spacing: .06em; margin-bottom: 8px;
+}
+.os__pressure-card-h {
+  font-size: 17px; font-weight: 600;
+  margin-bottom: 8px; letter-spacing: -.005em;
+  color: #fff;
+}
+.os__pressure-card-p {
+  font-size: 13px; line-height: 1.55;
+  color: rgba(230,231,235,.6);
+}
+
+@media (max-width: 980px) { .os__pressure { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .os__pressure { grid-template-columns: 1fr; } }
+
+/* about + contact */
+.os__about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.os__about-card {
+  background: #13151a;
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 16px;
+  padding: 36px;
+}
+.os__about-card--accent {
+  background: linear-gradient(135deg, #c6f84e 0%, #5eead4 100%);
+  color: #0a0b0e;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+.os__about-h {
+  font-size: 28px; font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.15;
+  margin-bottom: 20px;
+}
+.os__about-p {
+  font-size: 15px; line-height: 1.6;
+  color: rgba(230,231,235,.7);
+}
+.os__about-card--accent .os__about-p { color: rgba(10,11,14,.8); }
+.os__about-list {
+  list-style: none; margin-top: 28px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.os__about-list li {
+  display: flex; justify-content: space-between;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  color: rgba(230,231,235,.6);
+}
+.os__about-list li strong { color: #fff; font-weight: 500; }
+
+@media (max-width: 880px) { .os__about { grid-template-columns: 1fr; } }
+
+/* footer */
+.os__footer {
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding: 28px 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: rgba(230,231,235,.4);
+  letter-spacing: .04em;
+}
+.os__footer-links { display: flex; gap: 20px; }
+@media (max-width: 640px) { .os__footer { padding: 24px 20px; flex-direction: column; gap: 16px; } }
+
+/* ============================================================
+   PORTFOLIO RECHNER (shared component, theme-styled)
+   ============================================================ */
+.calc {
+  background: #fff;
+  border-radius: 4px;
+  padding: 48px 40px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  position: relative;
+  overflow: hidden;
+}
+body[data-theme="silent"] .calc {
+  background: #0e1a2b;
+  color: #faf8f4;
+  border-radius: 4px;
+}
+body[data-theme="wende"] .calc {
+  background: #ffffff;
+  color: #2a2520;
+  border-radius: 16px;
+  box-shadow: 0 30px 80px -30px rgba(199,93,63,.15);
+}
+body[data-theme="os"] .calc {
+  background: #13151a;
+  color: #e6e7eb;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+.calc__head {
+  margin-bottom: 32px;
+}
+.calc__eyebrow {
+  font-size: 11px; letter-spacing: .22em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+body[data-theme="silent"] .calc__eyebrow { color: #c8b88a; font-family: "Inter Tight"; }
+body[data-theme="wende"] .calc__eyebrow { color: #c75d3f; }
+body[data-theme="os"] .calc__eyebrow { color: #c6f84e; font-family: "JetBrains Mono"; letter-spacing: .12em; }
+
+.calc__title {
+  font-size: 26px; line-height: 1.2;
+  letter-spacing: -.005em; font-weight: 500;
+  text-wrap: balance;
+}
+body[data-theme="silent"] .calc__title {
+  font-family: "Instrument Serif", serif; font-weight: 400; font-size: 32px;
+}
+body[data-theme="wende"] .calc__title {
+  font-family: "Newsreader", serif; font-weight: 500; font-size: 30px;
+}
+body[data-theme="os"] .calc__title { font-weight: 600; font-size: 28px; }
+
+.calc__sub {
+  margin-top: 12px; font-size: 14px; line-height: 1.55; opacity: .7;
+  max-width: 460px;
+}
+
+.calc__controls { display: flex; flex-direction: column; gap: 28px; }
+.calc__control { display: flex; flex-direction: column; gap: 10px; }
+.calc__label-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.calc__label {
+  font-size: 13px; font-weight: 500;
+  letter-spacing: .005em;
+  opacity: .85;
+}
+.calc__value {
+  font-size: 16px; font-weight: 600;
+  font-feature-settings: "tnum";
+}
+body[data-theme="silent"] .calc__value { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 22px; color: #c8b88a; }
+body[data-theme="wende"] .calc__value { font-family: "Newsreader", serif; font-weight: 500; font-size: 22px; color: #c75d3f; }
+body[data-theme="os"] .calc__value { font-family: "JetBrains Mono", monospace; color: #c6f84e; }
+
+/* range slider (theme-aware) */
+.calc__range {
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(to right, currentColor var(--p, 50%), rgba(127,127,127,.2) var(--p, 50%));
+  cursor: pointer;
+  position: relative;
+}
+body[data-theme="silent"] .calc__range { color: #c8b88a; background: linear-gradient(to right, #c8b88a var(--p, 50%), rgba(255,255,255,.12) var(--p, 50%)); }
+body[data-theme="wende"] .calc__range { color: #c75d3f; background: linear-gradient(to right, #c75d3f var(--p, 50%), rgba(42,37,32,.12) var(--p, 50%)); }
+body[data-theme="os"] .calc__range { color: #c6f84e; background: linear-gradient(to right, #c6f84e var(--p, 50%), rgba(255,255,255,.08) var(--p, 50%)); }
+
+.calc__range::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: currentColor;
+  cursor: grab;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  transition: transform 200ms;
+}
+body[data-theme="silent"] .calc__range::-webkit-slider-thumb { background: #c8b88a; border-color: #0e1a2b; }
+body[data-theme="os"] .calc__range::-webkit-slider-thumb { background: #c6f84e; border-color: #13151a; box-shadow: 0 0 12px rgba(198,248,78,.5); }
+.calc__range::-moz-range-thumb {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: currentColor; cursor: grab; border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+.calc__range:active::-webkit-slider-thumb { transform: scale(1.15); cursor: grabbing; }
+
+/* toggle */
+.calc__toggle-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 18px;
+  border-radius: 10px;
+  background: rgba(127,127,127,.06);
+}
+body[data-theme="silent"] .calc__toggle-row { background: rgba(255,255,255,.06); }
+body[data-theme="os"] .calc__toggle-row { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06); }
+.calc__toggle {
+  position: relative;
+  width: 44px; height: 24px;
+  background: rgba(127,127,127,.3);
+  border-radius: 12px;
+  transition: background 200ms;
+}
+.calc__toggle::after {
+  content: "";
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 20px; height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  transition: left 200ms cubic-bezier(.7,0,.2,1);
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+.calc__toggle.is-on { }
+body[data-theme="silent"] .calc__toggle.is-on { background: #c8b88a; }
+body[data-theme="wende"] .calc__toggle.is-on { background: #c75d3f; }
+body[data-theme="os"] .calc__toggle.is-on { background: #c6f84e; }
+.calc__toggle.is-on::after { left: 22px; }
+
+.calc__toggle-text { font-size: 13px; font-weight: 500; }
+.calc__toggle-text-meta { display: block; font-size: 11px; opacity: .6; margin-top: 2px; font-weight: 400; }
+
+/* outputs */
+.calc__outputs {
+  display: flex; flex-direction: column;
+  gap: 0;
+  padding: 0;
+  height: 100%;
+  justify-content: center;
+}
+.calc__output {
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(127,127,127,.15);
+}
+.calc__output:last-child { border-bottom: none; }
+body[data-theme="silent"] .calc__output { border-bottom-color: rgba(255,255,255,.1); }
+body[data-theme="os"] .calc__output { border-bottom-color: rgba(255,255,255,.06); }
+
+.calc__output-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.calc__output-label {
+  font-size: 12px; letter-spacing: .04em;
+  opacity: .65;
+  text-transform: uppercase;
+}
+body[data-theme="os"] .calc__output-label { font-family: "JetBrains Mono"; }
+
+.calc__output-num {
+  font-size: 44px; font-weight: 500;
+  letter-spacing: -.015em;
+  line-height: 1;
+  font-feature-settings: "tnum";
+}
+body[data-theme="silent"] .calc__output-num { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 56px; color: #c8b88a; }
+body[data-theme="wende"] .calc__output-num { font-family: "Newsreader", serif; font-weight: 500; font-size: 50px; color: #c75d3f; }
+body[data-theme="os"] .calc__output-num { font-weight: 600; font-size: 46px; color: #c6f84e; }
+
+.calc__output-unit { font-size: 14px; opacity: .6; margin-left: 6px; font-weight: 400; }
+.calc__output-bar {
+  margin-top: 10px;
+  height: 3px;
+  background: rgba(127,127,127,.15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.calc__output-bar-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 2px;
+  transition: width 600ms cubic-bezier(.7,0,.2,1);
+}
+body[data-theme="silent"] .calc__output-bar-fill { background: linear-gradient(90deg, #c8b88a, #f5e9c8); }
+body[data-theme="wende"] .calc__output-bar-fill { background: linear-gradient(90deg, #c75d3f, #e89a5d); }
+body[data-theme="os"] .calc__output-bar-fill { background: linear-gradient(90deg, #c6f84e, #5eead4); }
+.calc__output-trend { font-size: 11px; opacity: .55; margin-top: 4px; }
+
+@media (max-width: 880px) { .calc { grid-template-columns: 1fr; gap: 36px; padding: 32px 24px; } }
+
+</style>
+</head>
+<body data-theme="silent">
+
+<!-- ===================== THEME SWITCHER ===================== -->
+<div class="switcher" role="tablist" aria-label="Design-Richtung wählen">
+  <span class="switcher__label">Design-Richtung</span>
+  <button class="switcher__btn is-active" data-target="silent" role="tab" aria-selected="true">Stille Infrastruktur</button>
+  <button class="switcher__btn" data-target="wende" role="tab" aria-selected="false">Wärmewende</button>
+  <button class="switcher__btn" data-target="os" role="tab" aria-selected="false">Portfolio OS</button>
+</div>
+
+<!-- ============================================================
+     THEME 1: STILLE INFRASTRUKTUR
+     ============================================================ -->
+<div class="theme-page is-active is-visible silent" data-page="silent">
+
+<nav class="silent__nav">
+  <a href="#start-s" class="silent__brand">
+    <span class="silent__brand-mark"></span>
+    Heat &amp; Cold Contracting
+  </a>
+  <div class="silent__nav-links">
+    <a class="silent__nav-link" href="#start-s">Startseite</a>
+    <a class="silent__nav-link" href="#leistung-s">Leistung</a>
+    <a class="silent__nav-link" href="#portfolio-s">Portfolio-Ansatz</a>
+    <a class="silent__nav-link" href="#about-s">Über uns</a>
+  </div>
+  <a class="silent__nav-cta" href="#kontakt-s">Portfolio prüfen</a>
+</nav>
+
+<section class="silent__hero" id="start-s">
+  <div class="silent__hero-plan" aria-hidden="true">
+    <svg viewBox="0 0 400 400" fill="none" stroke="#0e1a2b" stroke-width=".5">
+      <circle cx="200" cy="200" r="195" opacity=".15" />
+      <circle cx="200" cy="200" r="155" opacity=".25" />
+      <circle cx="200" cy="200" r="115" opacity=".35" />
+      <circle cx="200" cy="200" r="75" opacity=".5" />
+      <line x1="0" y1="200" x2="400" y2="200" opacity=".2" />
+      <line x1="200" y1="0" x2="200" y2="400" opacity=".2" />
+      <line x1="58" y1="58" x2="342" y2="342" opacity=".15" />
+      <line x1="342" y1="58" x2="58" y2="342" opacity=".15" />
+      <!-- buildings -->
+      <g opacity=".7">
+        <rect x="180" y="160" width="14" height="40" stroke-width="1" />
+        <rect x="195" y="148" width="10" height="52" stroke-width="1" />
+        <rect x="206" y="170" width="14" height="30" stroke-width="1" />
+      </g>
+      <g opacity=".5">
+        <rect x="120" y="240" width="16" height="36" stroke-width="1" />
+        <rect x="140" y="230" width="12" height="46" stroke-width="1" />
+        <rect x="260" y="230" width="14" height="46" stroke-width="1" />
+        <rect x="280" y="246" width="16" height="30" stroke-width="1" />
+      </g>
+      <g opacity=".4">
+        <rect x="80" y="120" width="14" height="30" stroke-width="1" />
+        <rect x="300" y="130" width="16" height="34" stroke-width="1" />
+      </g>
+      <text x="200" y="394" text-anchor="middle" font-family="Instrument Serif" font-size="9" fill="#0e1a2b" opacity=".4" font-style="italic">Portfolio Plan · 01</text>
+    </svg>
+  </div>
+
+  <div class="silent__hero-grid">
+    <div>
+      <div class="silent__eyebrow">Decarbonization-as-a-Service</div>
+      <h1 class="silent__h1">Wärme.<br/><em>Verlässlich.</em><br/>Im Bestand.</h1>
+    </div>
+    <div class="silent__hero-meta">
+      <p class="silent__lede">Wir übernehmen die Energiewende für institutionelle Wohnungs­portfolios — ohne Kapital­bindung, ohne Technologie­risiko, ohne Betriebs­risiko.</p>
+      <div class="silent__cta-row">
+        <a class="silent__cta-primary" href="#rechner-s">Portfolio prüfen
+          <svg class="silent__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="silent__cta-secondary" href="#leistung-s">Ansatz entdecken
+          <svg class="silent__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="silent__strip">
+  <div class="silent__strip-label">Im Auftrag von</div>
+  <div class="silent__strip-stats">
+    <div>
+      <span class="silent__stat-num">120<sup>+</sup></span>
+      <span class="silent__stat-cap">betreute Liegenschaften</span>
+    </div>
+    <div>
+      <span class="silent__stat-num">€ 0</span>
+      <span class="silent__stat-cap">CAPEX für den Eigentümer</span>
+    </div>
+    <div>
+      <span class="silent__stat-num">15<sup>J.</sup></span>
+      <span class="silent__stat-cap">Vertragslaufzeiten</span>
+    </div>
+    <div>
+      <span class="silent__stat-num">42<sup>%</sup></span>
+      <span class="silent__stat-cap">durchschnittl. CO₂-Reduktion</span>
+    </div>
+  </div>
+</div>
+
+<section class="silent__section" id="leistung-s">
+  <div class="silent__section-head">
+    <div class="silent__section-num">— 01 / Leistung</div>
+    <h2 class="silent__section-h">Sechs Module. <em>Ein Vertragsgeber.</em> Vollständige Verantwortung über die gesamte Anlagenlaufzeit.</h2>
+  </div>
+  <p class="silent__section-sub" style="margin-top:-60px; margin-bottom:64px;">Technologieneutral konzipiert. Wir wählen Wärmepumpe, Quartiers­wärme, Geothermie, Solarthermie oder Hybridlösung — entlang der individuellen Asset-Charakteristik, nicht entlang einer Produkt­agenda.</p>
+
+  <div class="silent__modules">
+    <div class="silent__module">
+      <div class="silent__module-num">i.</div>
+      <svg class="silent__module-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="6"/><path d="M16 16l5 5"/></svg>
+      <h3 class="silent__module-h">Analyse</h3>
+      <p class="silent__module-p">Portfolio-Screening, Asset-Diagnostik, Verbrauchs- und Effizienz­profil je Liegenschaft. Datenbasis für die Roadmap.</p>
+    </div>
+    <div class="silent__module">
+      <div class="silent__module-num">ii.</div>
+      <svg class="silent__module-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="13" rx="1"/><path d="M3 10h18M7 15h2"/></svg>
+      <h3 class="silent__module-h">Finanzierung</h3>
+      <p class="silent__module-p">Contracting-Modell ohne Kapital­bindung. Wir investieren, betreiben und refinanzieren über die Wärmeleistung.</p>
+    </div>
+    <div class="silent__module">
+      <div class="silent__module-num">iii.</div>
+      <svg class="silent__module-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+      <h3 class="silent__module-h">Umsetzung</h3>
+      <p class="silent__module-p">Planung, Genehmigung, Montage. Technologieneutraler Rollout entlang priorisierter Asset-Cluster.</p>
+    </div>
+    <div class="silent__module">
+      <div class="silent__module-num">iv.</div>
+      <svg class="silent__module-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <h3 class="silent__module-h">Betrieb</h3>
+      <p class="silent__module-p">Anlagenbetrieb über die gesamte Laufzeit. Wartung, Instandhaltung, Störungs­management — 24/7 verfügbar.</p>
+    </div>
+    <div class="silent__module">
+      <div class="silent__module-num">v.</div>
+      <svg class="silent__module-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 17l5-5 4 4 8-8M16 8h5v5"/></svg>
+      <h3 class="silent__module-h">Monitoring</h3>
+      <p class="silent__module-p">Kontinuierliche Performance-Kontrolle, GEG-Reporting, ESG-Datenexport. Transparenz nach institutionellem Standard.</p>
+    </div>
+    <div class="silent__module">
+      <div class="silent__module-num">vi.</div>
+      <svg class="silent__module-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 4v3M12 17v3M4 12h3M17 12h3M6.3 6.3l2.1 2.1M15.6 15.6l2.1 2.1M6.3 17.7l2.1-2.1M15.6 8.4l2.1-2.1"/></svg>
+      <h3 class="silent__module-h">Optimierung</h3>
+      <p class="silent__module-p">Iterative Effizienz­steigerung über den Lebenszyklus. Lastmanagement, Tarif­strategie, Re-Investitions­zyklen.</p>
+    </div>
+  </div>
+</section>
+
+<section class="silent__section" id="portfolio-s" style="padding-top:0;">
+  <div class="silent__section-head">
+    <div class="silent__section-num">— 02 / Portfolio-Ansatz</div>
+    <h2 class="silent__section-h">Warum die Wärmewende eine <em>Portfolioaufgabe</em> ist — und keine Liegenschafts­aufgabe.</h2>
+  </div>
+
+  <div class="silent__pillars">
+    <div class="silent__pillar">
+      <div class="silent__pillar-num">01<sup>·</sup></div>
+      <h4 class="silent__pillar-h">Regulatorischer Druck</h4>
+      <p class="silent__pillar-p">GEG, EU-Taxonomie und ESG-Pfade verschieben die Modernisierungs­fristen — gleichzeitig.</p>
+    </div>
+    <div class="silent__pillar">
+      <div class="silent__pillar-num">02<sup>·</sup></div>
+      <h4 class="silent__pillar-h">CAPEX-Entlastung</h4>
+      <p class="silent__pillar-p">Kapital bleibt verfügbar für Akquisition, Sanierung und Portfolio­strategie.</p>
+    </div>
+    <div class="silent__pillar">
+      <div class="silent__pillar-num">03<sup>·</sup></div>
+      <h4 class="silent__pillar-h">Operative Komplexität</h4>
+      <p class="silent__pillar-p">Ein Vertragspartner über das gesamte Portfolio. Statt 200 Heizungs­bauer.</p>
+    </div>
+    <div class="silent__pillar">
+      <div class="silent__pillar-num">04<sup>·</sup></div>
+      <h4 class="silent__pillar-h">CO₂-Pfad</h4>
+      <p class="silent__pillar-p">Messbar, auditierbar, in ESG- und SFDR-Reporting integrierbar.</p>
+    </div>
+    <div class="silent__pillar">
+      <div class="silent__pillar-num">05<sup>·</sup></div>
+      <h4 class="silent__pillar-h">Roadmap 10–15 J.</h4>
+      <p class="silent__pillar-p">Sequenzierte Modernisierung statt Einzelfall­entscheidung pro Heizungs­ausfall.</p>
+    </div>
+  </div>
+</section>
+
+<section class="silent__section" id="rechner-s" style="padding-top:0;">
+  <div class="silent__section-head">
+    <div class="silent__section-num">— 03 / Portfolio-Rechner</div>
+    <h2 class="silent__section-h">Was Ihre Wärmewende <em>verändert.</em> Indikative Berechnung in zehn Sekunden.</h2>
+  </div>
+  <div class="calc" id="calc-s">
+    <!-- calc gets injected by JS -->
+  </div>
+</section>
+
+<section class="silent__section" id="about-s" style="padding-top:0;">
+  <div class="silent__section-head">
+    <div class="silent__section-num">— 04 / Über uns</div>
+    <h2 class="silent__section-h">Eigentümer­denken. <em>Energie­wirtschaftliches Handwerk.</em></h2>
+  </div>
+
+  <div class="silent__about-grid">
+    <div class="silent__about-text">
+      <p>Heat &amp; Cold Contracting wurde 2019 in Berlin gegründet — von einem kleinen Team aus Energie­wirtschaft, Wohnungs­industrie und institutionellem Asset Management. Wir bauen das Unter­nehmen, das wir uns als ehemalige Bestands­halter selbst gewünscht hätten: einen Vertrags­partner, der Wärme­versorgung als Portfolio­aufgabe versteht.</p>
+      <p>Wir arbeiten ausschließlich für institutionelle Eigentümer — keine Privat­kunden, kein Endverbraucher­geschäft. Diese Fokussierung erlaubt uns, Strukturen, Prozesse und Verträge konsequent auf die Anforderungen großer Wohnungs­portfolios auszurichten.</p>
+    </div>
+    <div class="silent__about-card" id="kontakt-s">
+      <div class="silent__about-card-eyebrow">Kontakt</div>
+      <h4>Wir prüfen Ihr Portfolio innerhalb von zwei Wochen — vertraulich, unverbindlich.</h4>
+      <div class="silent__about-meta">
+        <strong>Heat &amp; Cold Contracting GmbH</strong><br/>
+        Schiffbauerdamm 22 · 10117 Berlin<br/>
+        <br/>
+        <a href="/cdn-cgi/l/email-protection#52223d2026343d3e3b3d123a31317f353f303a7c372a333f223e37"><span class="__cf_email__" data-cfemail="45352a3731232a292c2a052d2626682228272d6b203d2428352920">[email&#160;protected]</span></a><br/>
+        +49 30 0000 0000
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="silent__footer">
+  <div>© 2025 Heat &amp; Cold Contracting GmbH</div>
+  <div class="silent__footer-links">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+    <a href="#">ESG-Reporting</a>
+  </div>
+</footer>
+
+</div><!-- /silent -->
+
+
+<!-- ============================================================
+     THEME 2: WÄRMEWENDE
+     ============================================================ -->
+<div class="theme-page wende" data-page="wende">
+
+<nav class="wende__nav">
+  <a href="#start-w" class="wende__brand">
+    <span class="wende__brand-mark"></span>
+    Heat &amp; Cold Contracting
+  </a>
+  <div class="wende__nav-links">
+    <a class="wende__nav-link" href="#start-w">Startseite</a>
+    <a class="wende__nav-link" href="#leistung-w">Leistung</a>
+    <a class="wende__nav-link" href="#portfolio-w">Portfolio-Ansatz</a>
+    <a class="wende__nav-link" href="#about-w">Über uns</a>
+  </div>
+  <a class="wende__nav-cta" href="#rechner-w">Portfolio prüfen</a>
+</nav>
+
+<section class="wende__hero" id="start-w">
+  <div class="wende__hero-inner">
+    <div class="wende__hero-tag">
+      <span class="wende__hero-tag-dot"></span>
+      Wärmewende im Bestand
+    </div>
+    <h1 class="wende__h1">Vom fossilen Heizraum zur <em>grünen Bestands­strategie.</em></h1>
+    <div class="wende__hero-row">
+      <p class="wende__hero-lede">Wir begleiten institutionelle Wohnungs­portfolios durch die Transformation — Schritt für Schritt, Gebäude für Gebäude, Heizperiode für Heizperiode.</p>
+      <div class="wende__hero-actions">
+        <a class="wende__cta-primary" href="#rechner-w">Portfolio prüfen
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="wende__cta-secondary" href="#leistung-w">Ansatz entdecken</a>
+      </div>
+    </div>
+
+    <div class="wende__scene">
+      <div class="wende__scene-sun"></div>
+      <svg class="wende__scene-buildings" viewBox="0 0 1200 400" preserveAspectRatio="xMidYEnd meet">
+        <defs>
+          <linearGradient id="bld1" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#2f3a2e"/>
+            <stop offset="100%" stop-color="#1a2419"/>
+          </linearGradient>
+          <linearGradient id="bld2" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#3d4a3c"/>
+            <stop offset="100%" stop-color="#2a3429"/>
+          </linearGradient>
+        </defs>
+        <!-- back row -->
+        <g opacity=".5">
+          <rect x="40" y="200" width="100" height="200" fill="url(#bld2)" />
+          <rect x="160" y="170" width="80" height="230" fill="url(#bld2)" />
+          <rect x="270" y="220" width="120" height="180" fill="url(#bld2)" />
+          <rect x="420" y="180" width="90" height="220" fill="url(#bld2)" />
+          <rect x="540" y="210" width="110" height="190" fill="url(#bld2)" />
+          <rect x="680" y="190" width="100" height="210" fill="url(#bld2)" />
+          <rect x="810" y="200" width="130" height="200" fill="url(#bld2)" />
+          <rect x="970" y="180" width="80" height="220" fill="url(#bld2)" />
+          <rect x="1080" y="220" width="100" height="180" fill="url(#bld2)" />
+        </g>
+        <!-- front row -->
+        <g>
+          <rect x="0" y="240" width="140" height="160" fill="url(#bld1)" />
+          <rect x="150" y="220" width="120" height="180" fill="url(#bld1)" />
+          <rect x="280" y="260" width="100" height="140" fill="url(#bld1)" />
+          <rect x="390" y="230" width="160" height="170" fill="url(#bld1)" />
+          <rect x="560" y="250" width="120" height="150" fill="url(#bld1)" />
+          <rect x="690" y="220" width="140" height="180" fill="url(#bld1)" />
+          <rect x="840" y="240" width="120" height="160" fill="url(#bld1)" />
+          <rect x="970" y="225" width="150" height="175" fill="url(#bld1)" />
+          <rect x="1130" y="250" width="80" height="150" fill="url(#bld1)" />
+        </g>
+        <!-- windows -->
+        <g fill="#f9d9b5" opacity=".55">
+          <rect x="20" y="270" width="6" height="10"/><rect x="36" y="270" width="6" height="10"/>
+          <rect x="20" y="294" width="6" height="10"/><rect x="36" y="294" width="6" height="10"/>
+          <rect x="20" y="318" width="6" height="10"/><rect x="36" y="318" width="6" height="10"/>
+          <rect x="170" y="248" width="6" height="10"/><rect x="186" y="248" width="6" height="10"/><rect x="202" y="248" width="6" height="10"/>
+          <rect x="170" y="272" width="6" height="10"/><rect x="186" y="272" width="6" height="10"/><rect x="202" y="272" width="6" height="10"/>
+          <rect x="410" y="260" width="6" height="10"/><rect x="426" y="260" width="6" height="10"/><rect x="442" y="260" width="6" height="10"/><rect x="458" y="260" width="6" height="10"/>
+          <rect x="710" y="248" width="6" height="10"/><rect x="726" y="248" width="6" height="10"/><rect x="742" y="248" width="6" height="10"/>
+          <rect x="710" y="272" width="6" height="10"/><rect x="726" y="272" width="6" height="10"/><rect x="742" y="272" width="6" height="10"/>
+          <rect x="990" y="252" width="6" height="10"/><rect x="1006" y="252" width="6" height="10"/><rect x="1022" y="252" width="6" height="10"/>
+        </g>
+        <!-- heat pumps on roofs (subtle markers) -->
+        <g fill="#c75d3f">
+          <circle cx="450" cy="226" r="5"/>
+          <circle cx="900" cy="234" r="5"/>
+          <circle cx="200" cy="216" r="5"/>
+          <circle cx="1050" cy="220" r="5"/>
+        </g>
+      </svg>
+      <div class="wende__scene-overlay"></div>
+    </div>
+  </div>
+</section>
+
+<section class="wende__journey">
+  <div class="wende__journey-inner">
+    <div class="wende__journey-eyebrow">Die Reise</div>
+    <h2 class="wende__journey-h">Sechs Phasen, ein Vertragspartner — von der ersten Asset-Analyse bis zum <em>klimaneutralen</em> Bestandsbetrieb.</h2>
+    <div class="wende__journey-track">
+      <div class="wende__journey-line"></div>
+      <div class="wende__journey-step">
+        <div class="wende__journey-dot"></div>
+        <div class="wende__journey-num">i.</div>
+        <h4 class="wende__journey-step-h">Analyse</h4>
+        <p class="wende__journey-p">Portfolio-Screening, Wärme­profil, Sanierungs­bedarf je Asset.</p>
+      </div>
+      <div class="wende__journey-step">
+        <div class="wende__journey-dot"></div>
+        <div class="wende__journey-num">ii.</div>
+        <h4 class="wende__journey-step-h">Finanzierung</h4>
+        <p class="wende__journey-p">Wärme-Contracting ohne Kapital­bindung.</p>
+      </div>
+      <div class="wende__journey-step">
+        <div class="wende__journey-dot"></div>
+        <div class="wende__journey-num">iii.</div>
+        <h4 class="wende__journey-step-h">Umsetzung</h4>
+        <p class="wende__journey-p">Technologie­neutraler Rollout nach Cluster­priorität.</p>
+      </div>
+      <div class="wende__journey-step">
+        <div class="wende__journey-dot"></div>
+        <div class="wende__journey-num">iv.</div>
+        <h4 class="wende__journey-step-h">Betrieb</h4>
+        <p class="wende__journey-p">24/7-Betrieb der gesamten Wärme­infrastruktur.</p>
+      </div>
+      <div class="wende__journey-step">
+        <div class="wende__journey-dot"></div>
+        <div class="wende__journey-num">v.</div>
+        <h4 class="wende__journey-step-h">Monitoring</h4>
+        <p class="wende__journey-p">GEG- und ESG-Reporting in institutionellem Format.</p>
+      </div>
+      <div class="wende__journey-step">
+        <div class="wende__journey-dot"></div>
+        <div class="wende__journey-num">vi.</div>
+        <h4 class="wende__journey-step-h">Optimierung</h4>
+        <p class="wende__journey-p">Iterative Effizienz­steigerung über die Vertrags­laufzeit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wende__section" id="leistung-w">
+  <div class="wende__section-head">
+    <div class="wende__section-eyebrow">Leistung</div>
+    <h2 class="wende__section-h">Wärme als Dienst­leistung — <em>nicht als Anlage</em> in Ihrer Bilanz.</h2>
+    <p class="wende__section-sub">Wir planen, finanzieren, bauen und betreiben die Wärme­versorgung Ihres Portfolios. Sie kaufen Wärme, kein Heizungs­projekt.</p>
+  </div>
+
+  <div class="wende__modules">
+    <div class="wende__module wende__module--accent">
+      <div class="wende__module-row">
+        <div class="wende__module-num">01.</div>
+        <div class="wende__module-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6"/><path d="M16 16l5 5"/></svg>
+        </div>
+      </div>
+      <h3 class="wende__module-h">Analyse &amp; Roadmap</h3>
+      <p class="wende__module-p">Wir scannen Ihr Portfolio, gruppieren Assets nach Wärme­profil und erstellen eine sequenzierte Modernisierungs­roadmap über 10–15 Jahre.</p>
+    </div>
+    <div class="wende__module">
+      <div class="wende__module-row">
+        <div class="wende__module-num">02.</div>
+        <div class="wende__module-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="1"/><path d="M3 10h18M7 15h2"/></svg>
+        </div>
+      </div>
+      <h3 class="wende__module-h">Finanzierung</h3>
+      <p class="wende__module-p">Volle Investition durch uns. Refinanzierung über die gelieferte Wärme­leistung, nicht über CAPEX-Beträge auf Ihrer Seite.</p>
+    </div>
+    <div class="wende__module">
+      <div class="wende__module-row">
+        <div class="wende__module-num">03.</div>
+        <div class="wende__module-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+        </div>
+      </div>
+      <h3 class="wende__module-h">Umsetzung</h3>
+      <p class="wende__module-p">Technologie­neutraler Rollout: Wärmepumpe, Quartiers­wärme, Geothermie, Hybrid — entlang der Asset-Charakteristik, nicht entlang einer Produktagenda.</p>
+    </div>
+    <div class="wende__module wende__module--moss">
+      <div class="wende__module-row">
+        <div class="wende__module-num">04.</div>
+        <div class="wende__module-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+      </div>
+      <h3 class="wende__module-h">Betrieb</h3>
+      <p class="wende__module-p">Vollständige Betriebs­verantwortung. Wartung, Instandhaltung, Störungs­behebung — 24/7, mit Reaktions­zeit-Garantie.</p>
+    </div>
+    <div class="wende__module">
+      <div class="wende__module-row">
+        <div class="wende__module-num">05.</div>
+        <div class="wende__module-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17l5-5 4 4 8-8M16 8h5v5"/></svg>
+        </div>
+      </div>
+      <h3 class="wende__module-h">Monitoring</h3>
+      <p class="wende__module-p">Live-Performance je Liegenschaft. ESG- und GEG-Berichts­export in institutionellem Format. Audit-Spur über die gesamte Laufzeit.</p>
+    </div>
+    <div class="wende__module">
+      <div class="wende__module-row">
+        <div class="wende__module-num">06.</div>
+        <div class="wende__module-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4v3M12 17v3M4 12h3M17 12h3M6.3 6.3l2.1 2.1M15.6 15.6l2.1 2.1M6.3 17.7l2.1-2.1M15.6 8.4l2.1-2.1"/></svg>
+        </div>
+      </div>
+      <h3 class="wende__module-h">Optimierung</h3>
+      <p class="wende__module-p">Iterative Effizienz­steigerung. Lastmanagement, Tarif­strategie, Re-Investitions­zyklen — über die gesamte Laufzeit.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wende__pressure" id="portfolio-w">
+  <div class="wende__pressure-inner">
+    <div class="wende__section-head" style="margin-bottom:0;">
+      <div class="wende__section-eyebrow">Portfolio-Ansatz</div>
+      <h2 class="wende__section-h">Fünf Bewegungen, die <em>jede deutsche Bestands­strategie</em> in den nächsten zehn Jahren prägen werden.</h2>
+    </div>
+    <div class="wende__pressure-grid">
+      <div class="wende__pressure-card">
+        <div class="wende__pressure-card-num">01</div>
+        <h4 class="wende__pressure-card-h">Regulatorischer Druck steigt schneller als CAPEX-Budgets</h4>
+        <p class="wende__pressure-card-p">GEG, EU-Taxonomie, ESG-Pfade verschieben Modernisierungs­fristen — gleichzeitig.</p>
+      </div>
+      <div class="wende__pressure-card">
+        <div class="wende__pressure-card-num">02</div>
+        <h4 class="wende__pressure-card-h">Heizungs­austausch ist eine Portfolio­frage, keine Liegenschaftsfrage</h4>
+        <p class="wende__pressure-card-p">200 Heizungs­ausfälle in zehn Jahren ergeben keine Strategie. Eine sequenzierte Roadmap schon.</p>
+      </div>
+      <div class="wende__pressure-card">
+        <div class="wende__pressure-card-num">03</div>
+        <h4 class="wende__pressure-card-h">CO₂-Pfade müssen messbar und auditierbar werden</h4>
+        <p class="wende__pressure-card-p">SFDR, Article 8, EU-Taxonomie — ESG-Reporting fordert eine Datentiefe, die im Bestand bisher kaum existiert.</p>
+      </div>
+      <div class="wende__pressure-card">
+        <div class="wende__pressure-card-num">04</div>
+        <h4 class="wende__pressure-card-h">Kapital wird teurer — operative Effizienz wird wertvoller</h4>
+        <p class="wende__pressure-card-p">Contracting verlagert die Bilanz­wirkung. Liquidität bleibt für Akquisition und Sanierung verfügbar.</p>
+      </div>
+      <div class="wende__pressure-card">
+        <div class="wende__pressure-card-num">05</div>
+        <h4 class="wende__pressure-card-h">Mieter­akzeptanz entscheidet über die Geschwindig­keit der Wende</h4>
+        <p class="wende__pressure-card-p">Stabile Wärme­preise, geräusch­arme Anlagen, transparente Abrechnung — die Wärmewende muss im Treppen­haus funktionieren.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wende__section" id="rechner-w" style="padding-top: 0;">
+  <div class="wende__section-head">
+    <div class="wende__section-eyebrow">Portfolio-Rechner</div>
+    <h2 class="wende__section-h">Was Ihre Wärmewende <em>verändert.</em></h2>
+    <p class="wende__section-sub">Indikative Berechnung — keine verbindliche Zusage. Für eine echte Asset-Diagnostik benötigen wir Bestandsdaten.</p>
+  </div>
+  <div class="calc" id="calc-w">
+    <!-- calc gets injected by JS -->
+  </div>
+</section>
+
+<section class="wende__about" id="about-w">
+  <div>
+    <div class="wende__section-eyebrow">Über uns</div>
+    <h2 class="wende__section-h" style="margin-bottom: 28px;">Wir kommen aus dem Bestand. <em>Nicht aus dem Heizungs­vertrieb.</em></h2>
+    <div class="wende__about-text">
+      <p>Heat &amp; Cold Contracting wurde 2019 in Berlin gegründet — von einem kleinen Team aus Energie­wirtschaft, Wohnungs­industrie und institutionellem Asset Management. Wir bauen das Unter­nehmen, das wir uns als Bestandshalter selbst gewünscht hätten.</p>
+      <blockquote class="wende__about-quote">„Wir verkaufen keine Wärmepumpen. Wir liefern Wärme — über zehn, fünfzehn Jahre, in einer Bilanz, die nicht Ihre ist."</blockquote>
+      <p>Wir arbeiten ausschließlich für institutionelle Eigen­tümer. Diese Fokussierung erlaubt uns, Strukturen, Prozesse und Verträge konsequent auf die Anforderungen großer Wohnungs­portfolios auszurichten.</p>
+    </div>
+  </div>
+  <div class="wende__about-card" id="kontakt-w">
+    <div class="wende__about-card-eyebrow">Kontakt</div>
+    <h4>Wir prüfen Ihr Portfolio innerhalb von zwei Wochen — vertraulich, unverbindlich.</h4>
+    <ul class="wende__about-list">
+      <li><strong>Heat &amp; Cold Contracting GmbH</strong></li>
+      <li>Schiffbauerdamm 22 · 10117 Berlin</li>
+      <li><a href="/cdn-cgi/l/email-protection#f3839c8187959c9f9a9cb39b9090de949e919bdd968b929e839f96" style="color:#c75d3f;"><span class="__cf_email__" data-cfemail="cebea1bcbaa8a1a2a7a18ea6adade3a9a3aca6e0abb6afa3bea2ab">[email&#160;protected]</span></a></li>
+      <li>+49 30 0000 0000</li>
+      <li style="margin-top: 16px;"><strong>Termin vorschlagen ›</strong></li>
+    </ul>
+  </div>
+</section>
+
+<footer class="wende__footer">
+  <div>© 2025 Heat &amp; Cold Contracting GmbH</div>
+  <div class="wende__footer-links">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+    <a href="#">ESG-Reporting</a>
+  </div>
+</footer>
+
+</div><!-- /wende -->
+
+
+<!-- ============================================================
+     THEME 3: PORTFOLIO OS
+     ============================================================ -->
+<div class="theme-page os" data-page="os">
+
+<nav class="os__nav">
+  <a href="#start-o" class="os__brand">
+    <span class="os__brand-mark"></span>
+    Heat &amp; Cold Contracting
+    <span class="os__brand-tag">v2.4</span>
+  </a>
+  <div class="os__nav-links">
+    <a class="os__nav-link" href="#start-o">Übersicht</a>
+    <a class="os__nav-link" href="#leistung-o">Plattform</a>
+    <a class="os__nav-link" href="#portfolio-o">Portfolio</a>
+    <a class="os__nav-link" href="#rechner-o">Simulator</a>
+    <a class="os__nav-link" href="#about-o">Unternehmen</a>
+  </div>
+  <a class="os__nav-cta" href="#rechner-o">Demo anfordern →</a>
+</nav>
+
+<section class="os__hero" id="start-o">
+  <div class="os__bento">
+    <div class="os__card os__card-headline">
+      <div class="os__card-tag">
+        <span class="os__card-tag-dot"></span>
+        PORTFOLIO ENERGY OS — LIVE
+      </div>
+      <h1 class="os__h1">Dekarbonisierung als <span class="os__h1-accent">operativer Layer</span> für Ihr Portfolio.</h1>
+      <p class="os__hero-lede">Eine Plattform für Planung, Finanzierung, Betrieb und Monitoring der Wärme­versorgung über das gesamte Wohnungs­portfolio — technologie­neutral, kapital­neutral, datengetrieben.</p>
+      <div class="os__hero-actions">
+        <a class="os__cta-primary" href="#rechner-o">Portfolio prüfen
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="os__cta-secondary" href="#leistung-o">Plattform entdecken</a>
+      </div>
+    </div>
+
+    <div class="os__card os__card-live">
+      <div class="os__card-mini-h">CO₂ — Echtzeit Portfolio</div>
+      <div>
+        <span class="os__live-stat" id="liveCo2">8.241</span>
+        <span class="os__live-stat-unit">t/a vermieden</span>
+      </div>
+      <div class="os__live-delta">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M5 1l4 5H1z"/></svg>
+        +12,4 % YoY
+      </div>
+      <svg class="os__sparkline" viewBox="0 0 200 60" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="sparkfill" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#c6f84e" stop-opacity=".4"/>
+            <stop offset="100%" stop-color="#c6f84e" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,50 L20,42 L40,46 L60,38 L80,32 L100,34 L120,24 L140,18 L160,20 L180,12 L200,8 L200,60 L0,60 Z" fill="url(#sparkfill)"/>
+        <path d="M0,50 L20,42 L40,46 L60,38 L80,32 L100,34 L120,24 L140,18 L160,20 L180,12 L200,8" fill="none" stroke="#c6f84e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <div class="os__card os__card-live">
+      <div class="os__card-mini-h">Aktive Liegenschaften</div>
+      <div>
+        <span class="os__live-stat" id="liveAssets">127</span>
+        <span class="os__live-stat-unit">Standorte · DE</span>
+      </div>
+      <div class="os__live-delta">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M5 1l4 5H1z"/></svg>
+        +6 letzte 30 T.
+      </div>
+      <div style="margin-top: auto; display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px;">
+        <div style="aspect-ratio:1; background: rgba(198,248,78,.6); border-radius:2px;"></div>
+        <div style="aspect-ratio:1; background: rgba(198,248,78,.4); border-radius:2px;"></div>
+        <div style="aspect-ratio:1; background: rgba(198,248,78,.7); border-radius:2px;"></div>
+        <div style="aspect-ratio:1; background: rgba(198,248,78,.3); border-radius:2px;"></div>
+        <div style="aspect-ratio:1; background: rgba(255,138,87,.5); border-radius:2px;"></div>
+        <div style="aspect-ratio:1; background: rgba(198,248,78,.5); border-radius:2px;"></div>
+        <div style="aspect-ratio:1; background: rgba(198,248,78,.8); border-radius:2px;"></div>
+        <div style="aspect-ratio:1; background: rgba(94,234,212,.6); border-radius:2px;"></div>
+        <div style="aspect-ratio:1; background: rgba(198,248,78,.4); border-radius:2px;"></div>
+        <div style="aspect-ratio:1; background: rgba(255,138,87,.4); border-radius:2px;"></div>
+        <div style="aspect-ratio:1; background: rgba(198,248,78,.6); border-radius:2px;"></div>
+        <div style="aspect-ratio:1; background: rgba(94,234,212,.4); border-radius:2px;"></div>
+      </div>
+    </div>
+
+    <div class="os__card os__card-map">
+      <div class="os__card-mini-h">Portfolio-Heatmap · Wärmequellen-Mix</div>
+      <div class="os__map-grid" id="osHeatmap"></div>
+      <div class="os__map-legend">
+        <div class="os__map-legend-item"><span class="os__map-legend-dot" style="background:rgba(255,138,87,.6)"></span>Fossil</div>
+        <div class="os__map-legend-item"><span class="os__map-legend-dot" style="background:rgba(94,234,212,.6)"></span>Hybrid</div>
+        <div class="os__map-legend-item"><span class="os__map-legend-dot" style="background:#c6f84e"></span>Grün</div>
+      </div>
+    </div>
+
+    <div class="os__card os__card-live">
+      <div class="os__card-mini-h">CAPEX-Entlastung kumuliert</div>
+      <div>
+        <span class="os__live-stat" id="liveCapex">€ 184</span>
+        <span class="os__live-stat-unit">Mio.</span>
+      </div>
+      <div class="os__live-delta">
+        seit Platform-Launch 2021
+      </div>
+      <div style="margin-top: auto; display: flex; align-items: end; gap: 4px; height: 60px;">
+        <div style="flex:1; background:rgba(198,248,78,.3); height:20%; border-radius:2px;"></div>
+        <div style="flex:1; background:rgba(198,248,78,.4); height:32%; border-radius:2px;"></div>
+        <div style="flex:1; background:rgba(198,248,78,.5); height:48%; border-radius:2px;"></div>
+        <div style="flex:1; background:rgba(198,248,78,.6); height:62%; border-radius:2px;"></div>
+        <div style="flex:1; background:rgba(198,248,78,.7); height:78%; border-radius:2px;"></div>
+        <div style="flex:1; background:#c6f84e; height:100%; border-radius:2px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="os__section" id="leistung-o">
+  <div class="os__section-head">
+    <div class="os__section-head-left">
+      <div class="os__section-tag">/ PLATFORM_MODULES</div>
+      <h2 class="os__section-h">Sechs Module. <em>Ein Operating Layer.</em> Volle Steuer­barkeit über das Portfolio.</h2>
+    </div>
+    <p class="os__section-sub">Technologie­neutral konzipiert. Wir wählen Wärmepumpe, Quartiers­wärme, Geothermie, Solarthermie oder Hybridlösung entlang der individuellen Asset-Charakteristik.</p>
+  </div>
+
+  <div class="os__modules">
+    <div class="os__module">
+      <div class="os__module-row">
+        <span class="os__module-num">01 / ANALYSE</span>
+        <span class="os__module-status">● LIVE</span>
+      </div>
+      <h3 class="os__module-h">Asset-Diagnostik</h3>
+      <p class="os__module-p">Portfolio-Screening, Verbrauchs- und Effizienz­profil je Liegenschaft. Datentiefe, die ESG-Reporting möglich macht.</p>
+      <div class="os__module-meta">
+        <span>Auto-Scan</span>
+        <strong>~ 14 Tage</strong>
+      </div>
+    </div>
+    <div class="os__module">
+      <div class="os__module-row">
+        <span class="os__module-num">02 / FINANZIERUNG</span>
+        <span class="os__module-status">● LIVE</span>
+      </div>
+      <h3 class="os__module-h">Contracting-Engine</h3>
+      <p class="os__module-p">Wir investieren, betreiben und refinanzieren über die Wärme­leistung. Keine CAPEX-Last auf Ihrer Seite, keine Bilanz­ausweitung.</p>
+      <div class="os__module-meta">
+        <span>Eigentümer-CAPEX</span>
+        <strong>€ 0</strong>
+      </div>
+    </div>
+    <div class="os__module">
+      <div class="os__module-row">
+        <span class="os__module-num">03 / UMSETZUNG</span>
+        <span class="os__module-status">● LIVE</span>
+      </div>
+      <h3 class="os__module-h">Rollout-Orchestrierung</h3>
+      <p class="os__module-p">Sequenzierte Modernisierung über das Portfolio. Cluster-Priorisierung nach Wärme­profil, Sanierungs­druck und Mieter­situation.</p>
+      <div class="os__module-meta">
+        <span>Technologie-Mix</span>
+        <strong>neutral</strong>
+      </div>
+    </div>
+    <div class="os__module">
+      <div class="os__module-row">
+        <span class="os__module-num">04 / BETRIEB</span>
+        <span class="os__module-status">● 24/7</span>
+      </div>
+      <h3 class="os__module-h">Anlagen­betrieb</h3>
+      <p class="os__module-p">Vollständige Betriebs­verantwortung über die Vertrags­laufzeit. SLA-besicherte Reaktions­zeiten, deutschland­weite Service-Struktur.</p>
+      <div class="os__module-meta">
+        <span>Verfügbarkeit</span>
+        <strong>≥ 99,5 %</strong>
+      </div>
+    </div>
+    <div class="os__module">
+      <div class="os__module-row">
+        <span class="os__module-num">05 / MONITORING</span>
+        <span class="os__module-status">● API</span>
+      </div>
+      <h3 class="os__module-h">Performance-Layer</h3>
+      <p class="os__module-p">Live-Performance je Liegenschaft. ESG- und GEG-Berichte als API-Export. Audit-Spur über die gesamte Vertrags­laufzeit.</p>
+      <div class="os__module-meta">
+        <span>Daten­granularität</span>
+        <strong>15 min</strong>
+      </div>
+    </div>
+    <div class="os__module">
+      <div class="os__module-row">
+        <span class="os__module-num">06 / OPTIMIERUNG</span>
+        <span class="os__module-status">● ML</span>
+      </div>
+      <h3 class="os__module-h">Effizienz-Engine</h3>
+      <p class="os__module-p">Iterative Effizienz­steigerung: Lastmanagement, Tarif­strategie, Wartungs­zyklen. Modellgestützt, kontinuierlich.</p>
+      <div class="os__module-meta">
+        <span>Effizienz-Uplift</span>
+        <strong>3–7 % p.a.</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="os__section" id="portfolio-o" style="padding-top: 0;">
+  <div class="os__section-head">
+    <div class="os__section-head-left">
+      <div class="os__section-tag">/ PORTFOLIO_PRESSURE</div>
+      <h2 class="os__section-h">Fünf Druck­vektoren auf <em>jedes deutsche Wohnungs­portfolio.</em></h2>
+    </div>
+    <p class="os__section-sub">Die Plattform bündelt regulatorische, kapital­seitige und operative Anforderungen in einem einzigen Steuerungs­layer.</p>
+  </div>
+
+  <div class="os__pressure">
+    <div class="os__pressure-card">
+      <div class="os__pressure-card-num">01 / GEG</div>
+      <div class="os__pressure-bar"><div class="os__pressure-bar-fill" style="width: 86%;"></div></div>
+      <h4 class="os__pressure-card-h">Regulatorischer Druck</h4>
+      <p class="os__pressure-card-p">GEG, EU-Taxonomie und ESG-Pfade verschieben Modernisierungs­fristen — gleichzeitig.</p>
+    </div>
+    <div class="os__pressure-card">
+      <div class="os__pressure-card-num">02 / CAPEX</div>
+      <div class="os__pressure-bar"><div class="os__pressure-bar-fill" style="width: 72%;"></div></div>
+      <h4 class="os__pressure-card-h">CAPEX-Entlastung</h4>
+      <p class="os__pressure-card-p">Kapital bleibt verfügbar für Akquisition, Sanierung und Portfolio­strategie.</p>
+    </div>
+    <div class="os__pressure-card">
+      <div class="os__pressure-card-num">03 / OPS</div>
+      <div class="os__pressure-bar"><div class="os__pressure-bar-fill" style="width: 64%;"></div></div>
+      <h4 class="os__pressure-card-h">Operative Komplexität</h4>
+      <p class="os__pressure-card-p">Ein Vertrags­partner über das gesamte Portfolio. Statt 200 Heizungs­bauer.</p>
+    </div>
+    <div class="os__pressure-card">
+      <div class="os__pressure-card-num">04 / CO₂</div>
+      <div class="os__pressure-bar"><div class="os__pressure-bar-fill" style="width: 78%;"></div></div>
+      <h4 class="os__pressure-card-h">CO₂-Pfad</h4>
+      <p class="os__pressure-card-p">Messbar, auditierbar, in ESG- und SFDR-Reporting integrierbar.</p>
+    </div>
+    <div class="os__pressure-card">
+      <div class="os__pressure-card-num">05 / ROADMAP</div>
+      <div class="os__pressure-bar"><div class="os__pressure-bar-fill" style="width: 91%;"></div></div>
+      <h4 class="os__pressure-card-h">Roadmap 10–15 J.</h4>
+      <p class="os__pressure-card-p">Sequenzierte Modernisierung statt Einzelfall­entscheidung pro Heizungs­ausfall.</p>
+    </div>
+  </div>
+</section>
+
+<section class="os__section" id="rechner-o" style="padding-top: 0;">
+  <div class="os__section-head">
+    <div class="os__section-head-left">
+      <div class="os__section-tag">/ PORTFOLIO_SIMULATOR</div>
+      <h2 class="os__section-h">Was Ihre Wärmewende <em>verändert.</em></h2>
+    </div>
+    <p class="os__section-sub">Indikative Berechnung. Für eine echte Asset-Diagnostik benötigen wir Bestandsdaten — wir liefern Ergebnisse innerhalb von 14 Tagen.</p>
+  </div>
+  <div class="calc" id="calc-o">
+    <!-- calc gets injected by JS -->
+  </div>
+</section>
+
+<section class="os__section" id="about-o" style="padding-top: 0;">
+  <div class="os__section-head">
+    <div class="os__section-head-left">
+      <div class="os__section-tag">/ COMPANY</div>
+      <h2 class="os__section-h">Gebaut von Bestands­haltern. <em>Für Bestands­halter.</em></h2>
+    </div>
+  </div>
+  <div class="os__about">
+    <div class="os__about-card">
+      <h3 class="os__about-h">Eigentümer­denken trifft auf Energiewirtschaft.</h3>
+      <p class="os__about-p">Heat &amp; Cold Contracting wurde 2019 in Berlin gegründet — von einem Team aus Energie­wirtschaft, Wohnungs­industrie und institutionellem Asset Management. Wir bauen das Unter­nehmen, das wir uns als Bestands­halter selbst gewünscht hätten.</p>
+      <ul class="os__about-list">
+        <li><span>Gegründet</span><strong>Berlin · 2019</strong></li>
+        <li><span>Mitarbeiter</span><strong>62 · DE</strong></li>
+        <li><span>Liegenschaften</span><strong>127 aktiv</strong></li>
+        <li><span>Vertrags­laufzeiten</span><strong>10–15 Jahre</strong></li>
+        <li><span>Geschäfts­modell</span><strong>B2B · institutionell</strong></li>
+      </ul>
+    </div>
+    <div class="os__about-card os__about-card--accent" id="kontakt-o">
+      <h3 class="os__about-h">Wir prüfen Ihr Portfolio innerhalb von zwei Wochen.</h3>
+      <p class="os__about-p">Vertraulich, unverbindlich. Sie liefern uns Bestands­daten, wir liefern eine indikative Roadmap mit CO₂-Pfad, CAPEX-Entlastung und Modernisierungs-Sequenzierung.</p>
+      <ul class="os__about-list" style="color: rgba(10,11,14,.7);">
+        <li style="border-bottom-color: rgba(10,11,14,.15); color: rgba(10,11,14,.7);"><span>E-Mail</span><strong style="color:#0a0b0e;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cebea1bcbaa8a1a2a7a18ea6adade3a9a3aca6e0abb6afa3bea2ab">[email&#160;protected]</a></strong></li>
+        <li style="border-bottom-color: rgba(10,11,14,.15); color: rgba(10,11,14,.7);"><span>Telefon</span><strong style="color:#0a0b0e;">+49 30 0000 0000</strong></li>
+        <li style="border-bottom-color: rgba(10,11,14,.15); color: rgba(10,11,14,.7);"><span>Adresse</span><strong style="color:#0a0b0e;">Schiffbauerdamm 22 · Berlin</strong></li>
+        <li style="border-bottom: none; color: rgba(10,11,14,.7);"><span>Reaktion</span><strong style="color:#0a0b0e;">&lt; 48 h</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="os__footer">
+  <div>© 2025 HEAT &amp; COLD CONTRACTING GMBH · v2.4</div>
+  <div class="os__footer-links">
+    <a href="#">IMPRESSUM</a>
+    <a href="#">DATENSCHUTZ</a>
+    <a href="#">ESG-REPORT</a>
+    <a href="#">STATUS · OK</a>
+  </div>
+</footer>
+
+</div><!-- /os -->
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ============================================================
+   THEME SWITCHER
+   ============================================================ */
+(function() {
+  const buttons = document.querySelectorAll('.switcher__btn');
+  const pages = document.querySelectorAll('.theme-page');
+  const body = document.body;
+
+  function setTheme(target) {
+    if (body.dataset.theme === target) return;
+
+    // 1. Fade out current
+    pages.forEach(p => p.classList.remove('is-visible'));
+
+    setTimeout(() => {
+      // 2. Switch
+      body.dataset.theme = target;
+      pages.forEach(p => {
+        if (p.dataset.page === target) {
+          p.classList.add('is-active');
+        } else {
+          p.classList.remove('is-active');
+        }
+      });
+
+      // 3. Update buttons
+      buttons.forEach(b => {
+        const isActive = b.dataset.target === target;
+        b.classList.toggle('is-active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      // 4. Scroll top
+      window.scrollTo({ top: 0, behavior: 'instant' });
+
+      // 5. Fade in
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const active = document.querySelector('.theme-page[data-page="' + target + '"]');
+          if (active) active.classList.add('is-visible');
+        });
+      });
+    }, 350);
+  }
+
+  buttons.forEach(b => b.addEventListener('click', () => setTheme(b.dataset.target)));
+})();
+
+
+/* ============================================================
+   PORTFOLIO RECHNER (shared component)
+   - Built once, mounted into all 3 theme containers
+   ============================================================ */
+(function() {
+  const calcHtml = `
+    <div class="calc__head">
+      <div class="calc__eyebrow">Portfolio-Rechner</div>
+      <h3 class="calc__title">Indikative Modellrechnung</h3>
+      <p class="calc__sub">Konfigurieren Sie Portfoliogröße, fossile Quote und Modernisierungs­druck. Die Werte sind Schätzungen, keine verbindliche Zusage.</p>
+    </div>
+    <div class="calc__controls">
+      <div class="calc__control">
+        <div class="calc__label-row">
+          <span class="calc__label">Portfoliogröße</span>
+          <span class="calc__value" data-out="size">1.200 WE</span>
+        </div>
+        <input type="range" class="calc__range" data-in="size" min="50" max="5000" step="50" value="1200" />
+      </div>
+      <div class="calc__control">
+        <div class="calc__label-row">
+          <span class="calc__label">Fossile Wärme­quote</span>
+          <span class="calc__value" data-out="fossil">68 %</span>
+        </div>
+        <input type="range" class="calc__range" data-in="fossil" min="0" max="100" step="1" value="68" />
+      </div>
+      <div class="calc__control">
+        <div class="calc__label-row">
+          <span class="calc__label">Modernisierungs­druck</span>
+          <span class="calc__value" data-out="urgency">3 / 5</span>
+        </div>
+        <input type="range" class="calc__range" data-in="urgency" min="1" max="5" step="1" value="3" />
+      </div>
+      <label class="calc__toggle-row">
+        <span class="calc__toggle-text">CAPEX-Entlastung über Contracting
+          <span class="calc__toggle-text-meta">Wärmebezug statt Investition</span>
+        </span>
+        <span class="calc__toggle is-on" data-in="capex"></span>
+      </label>
+    </div>
+    <div class="calc__outputs">
+      <div class="calc__output">
+        <div class="calc__output-row">
+          <span class="calc__output-label">CO₂-Reduktion p.a.</span>
+        </div>
+        <div style="margin-top: 8px;">
+          <span class="calc__output-num" data-out="co2">1.470</span>
+          <span class="calc__output-unit">t CO₂ / Jahr</span>
+        </div>
+        <div class="calc__output-bar"><div class="calc__output-bar-fill" data-out="co2-bar"></div></div>
+        <div class="calc__output-trend" data-out="co2-trend">≈ entspricht 980 PKW</div>
+      </div>
+      <div class="calc__output">
+        <div class="calc__output-row">
+          <span class="calc__output-label">CAPEX-Entlastung (kumuliert)</span>
+        </div>
+        <div style="margin-top: 8px;">
+          <span class="calc__output-num" data-out="capex">€ 6,5</span>
+          <span class="calc__output-unit">Mio. über Laufzeit</span>
+        </div>
+        <div class="calc__output-bar"><div class="calc__output-bar-fill" data-out="capex-bar"></div></div>
+        <div class="calc__output-trend" data-out="capex-trend">vs. Eigeninvestition</div>
+      </div>
+      <div class="calc__output">
+        <div class="calc__output-row">
+          <span class="calc__output-label">Roadmap-Dauer</span>
+        </div>
+        <div style="margin-top: 8px;">
+          <span class="calc__output-num" data-out="years">9,2</span>
+          <span class="calc__output-unit">Jahre bis Klimaneutralität</span>
+        </div>
+        <div class="calc__output-bar"><div class="calc__output-bar-fill" data-out="years-bar"></div></div>
+        <div class="calc__output-trend" data-out="years-trend">Sequenzierter Rollout</div>
+      </div>
+    </div>
+  `;
+
+  ['calc-s', 'calc-w', 'calc-o'].forEach(id => {
+    const host = document.getElementById(id);
+    if (host) host.innerHTML = calcHtml;
+  });
+
+  function fmt(n, digits) {
+    return new Intl.NumberFormat('de-DE', { minimumFractionDigits: digits || 0, maximumFractionDigits: digits || 0 }).format(n);
+  }
+
+  function update(scope) {
+    const sizeIn = scope.querySelector('[data-in="size"]');
+    const fossilIn = scope.querySelector('[data-in="fossil"]');
+    const urgencyIn = scope.querySelector('[data-in="urgency"]');
+    const capexEl = scope.querySelector('[data-in="capex"]');
+    if (!sizeIn) return;
+
+    const size = +sizeIn.value;
+    const fossil = +fossilIn.value;
+    const urgency = +urgencyIn.value;
+    const capex = capexEl.classList.contains('is-on');
+
+    // Slider gradient
+    [[sizeIn, 50, 5000], [fossilIn, 0, 100], [urgencyIn, 1, 5]].forEach(([el, mn, mx]) => {
+      const p = ((+el.value - mn) / (mx - mn)) * 100;
+      el.style.setProperty('--p', p + '%');
+    });
+
+    // Display values
+    scope.querySelector('[data-out="size"]').textContent = fmt(size) + ' WE';
+    scope.querySelector('[data-out="fossil"]').textContent = fossil + ' %';
+    scope.querySelector('[data-out="urgency"]').textContent = urgency + ' / 5';
+
+    // Calc
+    const co2 = size * (fossil / 100) * 1.8 * 1.2; // t/a
+    const capexAvoided = capex ? (size * 8.5 * (fossil / 100)) / 1000 : 0; // M€
+    const yearsBase = 5 + (urgency * 1.2) + ((fossil / 100) * 4);
+    const years = Math.max(4, Math.min(14, yearsBase));
+
+    scope.querySelector('[data-out="co2"]').textContent = fmt(co2);
+    scope.querySelector('[data-out="capex"]').textContent = '€ ' + fmt(capexAvoided, 1);
+    scope.querySelector('[data-out="years"]').textContent = fmt(years, 1);
+
+    // Bars
+    scope.querySelector('[data-out="co2-bar"]').style.width = Math.min(100, (co2 / 80) ) + '%';
+    scope.querySelector('[data-out="capex-bar"]').style.width = Math.min(100, (capexAvoided / 35) * 100) + '%';
+    scope.querySelector('[data-out="years-bar"]').style.width = ((years - 4) / 10) * 100 + '%';
+
+    // Trends
+    scope.querySelector('[data-out="co2-trend"]').textContent = '≈ entspricht ' + fmt(Math.round(co2 / 1.5)) + ' PKW jährlich';
+    scope.querySelector('[data-out="capex-trend"]').textContent = capex ? 'Contracting aktiv · CAPEX-Entlastung' : 'Eigeninvestition · keine Entlastung';
+    scope.querySelector('[data-out="years-trend"]').textContent = urgency >= 4 ? 'Beschleunigter Rollout' : urgency <= 2 ? 'Erweiterte Sequenzierung' : 'Standard-Sequenzierung';
+  }
+
+  document.querySelectorAll('.calc').forEach(scope => {
+    scope.addEventListener('input', () => update(scope));
+    const tg = scope.querySelector('[data-in="capex"]');
+    if (tg) tg.addEventListener('click', () => { tg.classList.toggle('is-on'); update(scope); });
+    update(scope);
+  });
+})();
+
+
+/* ============================================================
+   OS HEATMAP — Random portfolio grid
+   ============================================================ */
+(function() {
+  const grid = document.getElementById('osHeatmap');
+  if (!grid) return;
+  const states = ['', 'is-warm', 'is-warm-2', 'is-cool', 'is-cool-2', 'is-cool-3'];
+  const distribution = [0,0,0,1,1,1,1,2,2,2,3,3,3,4,4,5];
+  const cells = 8 * 5;
+  let html = '';
+  for (let i = 0; i < cells; i++) {
+    const idx = distribution[Math.floor(Math.random() * distribution.length)];
+    html += `<div class="os__map-cell ${states[idx]}"></div>`;
+  }
+  grid.innerHTML = html;
+})();
+
+/* ============================================================
+   OS — Live ticker
+   ============================================================ */
+(function() {
+  const co2El = document.getElementById('liveCo2');
+  const assetsEl = document.getElementById('liveAssets');
+  const capexEl = document.getElementById('liveCapex');
+  if (!co2El) return;
+  let co2 = 8241;
+  setInterval(() => {
+    if (document.body.dataset.theme !== 'os') return;
+    co2 += Math.random() < 0.6 ? Math.floor(Math.random() * 4) : 0;
+    co2El.textContent = new Intl.NumberFormat('de-DE').format(co2);
+  }, 2200);
+})();
+
+</script>
+</body>
+</html>
